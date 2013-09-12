@@ -12,6 +12,7 @@ set :local_user, ""
 set :local_host, ""
 set :local_port, ""
 set :local_shared, ""
+set :staging_shared, ""
 
 desc "Pull down Staging DB into Local Development DB"
 task :importdbrj do
@@ -66,6 +67,6 @@ end
 desc "Load production shared/ into local server"
 task :rsyncsharedlocal, :roles => :app do
   run <<-CMD
-    rsync -e "ssh -p #{local_port}" -avz --progress --exclude log/ --exclude wp-config.php --exclude shared/cache/ #{prod_shared} #{local_user}@#{local_host}:#{local_shared}
+    rsync -e "ssh -p #{local_port}" -avz --progress --exclude log/ --exclude wp-config.php --exclude shared/cache/ #{staging_shared} #{local_user}@#{local_host}:#{local_shared}
   CMD
 end
