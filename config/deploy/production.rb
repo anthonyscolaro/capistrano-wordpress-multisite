@@ -2,13 +2,13 @@ server '', :app, :db, :web, :primary => true
 set :repository,  "https://"
 set :application, ""
 set :deploy_to, "/var/www/#{application}/web/"
-set :prod_shared, "/var/www/#{application}/shared/"
 set :user, ""
 set :port, 00
 
 
 # STAGING ===============================================================================================
-set :staging_service, ""
+set :prod_shared, "/var/www/#{application}/shared/"
+set :staging_server, ""
 set :staging_shared, "/var/www/#{application}/shared/"
 
 
